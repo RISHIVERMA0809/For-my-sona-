@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Queen ✨</title>
+    <!-- Premium Romantic Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-pink: #ff4d6d;
+            --rose-gold: #ffb3c1;
+            --velvet-wine: #25001f;
+            --deep-space: #0f000d;
+            --gold: #ffb703;
+            --text-main: #fff0f5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--deep-space), var(--velvet-wine), var(--deep-space));
+            color: var(--text-main);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Floating Hearts Layer */
+        #heart-field {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -30px;
+            color: var(--primary-pink);
+            animation: floatUpward linear infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes floatUpward {
+            0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 1; }
+            100% { transform: translateY(-110vh) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+
+        /* Main Presentation Canvas */
+        .book-wrapper {
+            width: 92%;
+            max-width: 620px;
+            height: 85vh;
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(15px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+        }
+
+        /* Page Layering & Animations */
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            padding: 35px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.92) translateX(100%);
+            transition: all 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        .page.active {
+            opacity: 1;
+            transform: scale(1) translateX(0);
+            pointer-events: auto;
+        }
+
+        .page.exit {
+            opacity: 0;
+            transform: scale(0.92) translateX(-100%);
+        }
+
+        /* Landing Page Heart Styles */
+        .heart-btn {
+            font-size: 80px;
+            cursor: pointer;
+            animation: heartbeat 1.5s infinite;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px rgba(255, 77, 109, 0.6));
+        }
+
+        .heart-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--rose-gold);
+            letter-spacing: 1px;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.25); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.25); }
+            70% { transform: scale(1); }
+        }
+
+        /* Elegant Text Styles */
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.2rem;
+            color: var(--rose-gold);
+            margin-bottom: 15px;
+            text-shadow: 0 0 12px rgba(255, 77, 109, 0.4);
+        }
+
+        h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.4rem;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-weight: 300;
+            max-width: 460px;
+        }
+
+        /* Dynamic Framed Media Classes */
+        .media-box {
+            width: 100%;
+            max-width: 320px;
+            height: 230px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 3px solid var(--rose-gold);
+            border-radius: 16px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.4);
+        }
+
+        .media-box img, .media-box video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Classic White Polaroid Styling */
+        .polaroid-container {
+            background: #ffffff;
+            padding: 12px 12px 28px 12px;
+            box-shadow: 0 18px 35px rgba(0,0,0,0.6);
+            transform: rotate(-2.5deg);
+            max-width: 270px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        
+        .polaroid-container img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border: 1px solid #e0e0e0;
+        }
+
+        .polaroid-title {
+            font-family: 'Dancing Script', cursive;
+            color: #2b2b2b;
+            font-size: 1.5rem;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* Interactive Text Containers */
+        .highlight-item {
+            background: rgba(255, 77, 109, 0.12);
+            padding: 14px;
+            border-radius: 12px;
+            margin: 8px 0;
+            width: 100%;
+            max-width: 380px;
+            border-left: 5px solid var(--primary-pink);
+            text-align: left;
+        }
+
+        .love-letter {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 179, 193, 0.3);
+            padding: 25px;
+            border-radius: 16px;
+            max-width: 480px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+
+        .audio-wrapper {
+            margin-top: 10px;
+            width: 100%;
+            max-width: 290px;
+        }
+
+        /* Interactive Button Setup */
+        .action-btn {
+            background: linear-gradient(45deg, var(--primary-pink), var(--rose-gold));
+            color: #ffffff;
+            border: none;
+            padding: 12px 28px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 18px rgba(255, 77, 109, 0.35);
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 22px rgba(255, 77, 109, 0.55);
+        }
+
+        .control-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .btn-back {
+            background: transparent;
+            border: 2px solid var(--rose-gold);
+            color: var(--rose-gold);
+            box-shadow: none;
+        }
+        
+        .btn-back:hover {
+            background: rgba(255, 179, 193, 0.12);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="heart-field"></div>
+
+    <div class="book-wrapper">
+
+        <!-- PAGE 0: LANDING PAGE -->
+        <div class="page active" id="page-0">
+            <div class="heart-btn" onclick="goToNextPage(0)">❤️</div>
+            <div class="heart-text">Tap the heart to begin...</div>
+        </div>
+        
+        <!-- PAGE 1: INTRO COVER -->
+        <div class="page" id="page-1">
+            <h1>Hey meri jaan...</h1>
+            <p>Hello meri jaan, today is a very special day for you. Today is your day. I don't know how this page was created, but I created this small gift for you. If there is any mistake or if you are not happy to see it, please forgive me. I am so sorry.</p>
+            <button class="action-btn" onclick="goToNextPage(1)">Step Inside ➔</button>
+        </div>
+
+        <!-- PAGE 2: MAIN BIRTHDAY WISH -->
+        <div class="page" id="page-2">
+            <h1>Happy Birthday!</h1>
+            <h2>To My Beautiful Queen</h2>
+            <div class="media-box">
+                <!-- Replace 'your-image-1.jpeg' with the actual image name once it is in the same folder -->
+                <img src="Screenshot (126).png" alt="My Beautiful Birthday Girl" onerror="this.src='https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=600';">
+            </div>
+            <p>This pic is one of the most beautiful, and your smile is awesome. I request that you always smile like this.</p>
+            <div class="control-group">
+                <button class="action-btn btn-back" onclick="goToPrevPage(2)">Back</button>
+                <button class="action-btn" onclick="goToNextPage(2)">Next Page ➔</button>
+            </div>
+        </div>
+
+        <!-- PAGE 3: MUSIC PLAYER INTEGRATION -->
+        <div class="page" id="page-3">
+            <h2>Our Soundtrack</h2>
+            <p>Turn up your sound! Press play below to loop your special birthday background music.</p>
+            <div class="media-box">
+                <img src="music-theme.jpg" alt="Romantic Rhythm" onerror="this.src='https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600';">
+            </div>
+            <audio class="audio-wrapper" controls autoplay loop>
+                <source src="https://pagallworlds.com/wp-content/uploads/2025/09/Ek-Aisa-Woh-Jaha-Tha-Slowed-Reverb-Song-lyrics-Taqdeer-Akhil-Kalyani-Ramya-Edited-By.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <p style="font-size:0.75rem; color:var(--rose-gold);">*</p>
+            <div class="control-group">
+                <button class="action-btn btn-back" onclick="goToPrevPage(3)">Back</button>
+                <button class="action-btn" onclick="goToNextPage(3)">Keep Reading ➔</button>
+            </div>
+        </div>
+
+        <!-- PAGE 4: FIRST COUPLE HIGHLIGHT -->
+        <div class="page" id="page-4">
+            <h2>Your Cuteness</h2>
+            <div class="media-box">
+                <!-- Fixed broken image tag here -->
+                <img src="Screenshot (120).png" alt="Your Cuteness" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600';">
+            </div>
+            <p>Your cuteness and your happy face are awesome. I really like your cute and happy face, so please always be happy.</p>
+            <div class="control-group">
+                <button class="action-btn btn-back" onclick="goToPrevPage(4)">Back</button>
+                <button class="action-btn" onclick="goToNextPage(4)">Next Memory ➔</button>
+            </div>
+        </div>
+        <!-- PAGE 5: ADORING CANDIDS -->
+        <div class="page" id="page-5">
+            <h2>Breathtakingly You</h2>
+            <div class="polaroid-container">
+                <img src="Screenshot (122).png" alt="Stunning Capture" onerror="this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600';">
+                <div class="polaroid-title">Pure Elegance ✨</div>
+            </div>
+            <p>I love this picture of you because it perfectly captures your bright, brilliant, and unique inner light.</p>
+            <div class="control-group">
+                <button class="action-btn btn-back" onclick="goToPrevPage(5)">Back</button>
+                <button class="action-btn" onclick="goToNextPage(5)">Turn Page ➔</button>
+            </div>
+        </div>
+
+        <!-- PAGE 6: REASONS WHY I LOVE YOU (PART 1) -->
+        <div class="page" id="page-6">
+            <h2>Why I Am Lucky</h2>
+            <div class="highlight-item">
+                <strong>❤️ Your Radiant Smile:</strong> It instantly shifts my entire day into perfect focus.
+            </div>
+            <div class="highlight-item">
+                <strong>❤️ Your Gentle Heart:</strong> The immense warmth and kindness you give to the world inspires me daily.
+            </div>
+            <div class="highlight-item">
+                <strong>❤️ Your Brilliant Mind:</strong> I love our late-night talks and the depth of your thoughts.
+            </div>
+            <div class="control-group">
+                <button class="action-btn btn-back" onclick="goToPrevPage(6)">Back</button>
+                <button class="action-btn" onclick="goToNextPage(6)">More Reasons ➔</button>
+            </div>
+        </div>
+
+        <!-- PAGE 7: REASONS WHY I LOVE YOU (PART 2) -->
+        <div class="page" id="page-7">
+            <h2>...And Even More</h2>
+            <div class="highlight-item">
+                <strong>❤️ Your Strength:</strong> The grace and power you display when facing challenges is amazing.
+            </div>
+            <div class="highlight-item">
+                <strong>❤️ Our Comfort Zone:</strong> Wrapped up in your arms is the only place the world feels quiet.
+            </div>
+            <p style="margin-top: 15px;">You are, without question, the absolute love of my life.</p>
+            <div class="control-group">
+                <button class="action-btn btn-back" onclick="goToPrevPage(7)">Back</button>
+                <button class="action-btn" onclick="goToNextPage(7)">See More Photos ➔</button>
+            </div>
+        </div>
+
+        <!-- PAGE 8: SECOND COUPLE HIGHLIGHT -->
+        <div class="page" id="page-8">
+            <h2>Our Sweetest Escape</h2>
+            <div class="media-box">
+                <img src="Screenshot (123).png" alt="Our Adventure" onerror="this.src='https://images.unsplash.com/photo-1464746133101-a2c3f88e0dd9?q=80&w=600';">
+            </div>
+            <p>No matter where we travel or what adventures we dive into, home is anywhere you are, and you are my comfort zone.</p>
+            <div class="control-group">
+                <button class="action-btn btn-back" onclick="goToPrevPage(8)">Back</button>
+                <button class="action-btn" onclick="goToNextPage(8)">Next Page ➔</button>
+            </div>
+        </div>
+
+        <!-- PAGE 9: WRITTEN ABOUT LOVE -->
+        <div class="page" id="page-9">
+            <h2>My Definition of Love</h2>
+            <div class="love-letter">
+                <p style="font-family: 'Dancing Script', cursive; font-size: 1.5rem; color: var(--gold); margin-bottom: 10px;">"Love isn't just in the grand, sweeping moments..."</p>
+                <p>Meri jaan, you are my love and my life. No matter that we don't always meet, it is enough that we always talk, and I promise you that I will stay with you until the end of my life.</p>
+                <p style="margin-bottom: 0;">One day you asked me why I love you, and why only you? The answer is: you are special to me because you are the first girl who came into my life suddenly and dwelled in my heart and eyes. I lost you for a moment, but it was God's plan that you came into my life again, and I am never, ever going to lose you again. I love you so much meri jaan.</p>
+            </div>
+            <div class="control-group" style="margin-top: 20px;">
+                <button class="action-btn btn-back" onclick="goToPrevPage(9)">Back</button>
+                <button class="action-btn" onclick="goToNextPage(9)">Continue ➔</button>
+            </div>
+        </div>
+
+        <!-- PAGE 10: THIRD SINGLE PORTRAIT HIGHLIGHT -->
+        <div class="page" id="page-10">
+            <h2>My Favorite View</h2>
+            <div class="polaroid-container" style="transform: rotate(3deg);">
+                <img src="Screenshot (124).png" alt="Breathtaking Queen" onerror="this.src='https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=600';">
+                <div class="polaroid-title">Unmatched Beauty ❤️</div>
+            </div>
+            <p>You have this stunning way of looking gorgeous without even trying. And your eyes... wow. I always look into your eyes and get lost in them.</p>
+            <div class="control-group">
+                <button class="action-btn btn-back" onclick="goToPrevPage(10)">Back</button>
+                <button class="action-btn" onclick="goToNextPage(10)">Next Page ➔</button>
+            </div>
+        </div>
+
+        <!-- PAGE 11: THIRD COUPLE HIGHLIGHT -->
+        <div class="page" id="page-11">
+            <h2>Your Past Pic</h2>
+            <div class="media-box">
+                <img src="Screenshot (125).png" alt="Ultimate Team" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600';">
+            </div>
+            <p>There is no doubt that you are beautiful and awesome, but your old look with long hair was wow. There are no words for that. So please, I request you to change uour self as a old look, meri jaan.</p>
+            <div class="control-group">
+                <button class="action-btn btn-back" onclick="goToPrevPage(11)">Back</button>
+                <button class="action-btn" onclick="goToNextPage(11)">Read Poem ➔</button>
+            </div>
+        </div>
+
+        <!-- PAGE 12: A BIRTHDAY POEM -->
+        <div class="page" id="page-12">
+            <h2>Written For You</h2>
+            <p style="font-style: italic; font-family: 'Dancing Script', cursive; font-size: 1.6rem; line-height: 1.8; color: var(--rose-gold);">
+                "The stars look dull when you are bright,<br>
+                You guide me through the deepest night.<br>
+                Another year of grace and gleam,<br>
+                Living life with you is like a dream."
+            </p>
+            <div class="control-group">
+                <button class="action-btn btn-back" onclick="goToPrevPage(12)">Back</button>
+                <button class="action-btn" onclick="goToNextPage(12)">The Grand Wish ➔</button>
+            </div>
+        </div>
+
+        <!-- PAGE 13: THE FINAL SURPRISE CELEBRATION -->
+        <div class="page" id="page-13">
+            <h1>Endless Love ❤️</h1>
+            <p>This is just the start of another spectacular chapter. Close your beautiful eyes, make the biggest wish possible, and let's go celebrate you!</p>
+            <h2>I Love You to the Moon and Back!</h2>
+            <div class="control-group">
+                <button class="action-btn btn-back" onclick="goToPrevPage(13)">Back</button>
+                <button class="action-btn" onclick="location.reload();">Read From Start ↺</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Page Control & Particle Animation Engine -->
+    <script>
+        // Core Slide Navigation Engine
+        function goToNextPage(indexNow) {
+            const currentElement = document.getElementById(`page-${indexNow}`);
+            const nextElement = document.getElementById(`page-${indexNow + 1}`);
+            
+            if (nextElement) {
+                currentElement.classList.remove('active');
+                currentElement.classList.add('exit');
+                nextElement.classList.add('active');
+            }
+        }
+
+        function goToPrevPage(indexNow) {
+            const currentElement = document.getElementById(`page-${indexNow}`);
+            const prevElement = document.getElementById(`page-${indexNow - 1}`);
+            
+            if (prevElement) {
+                currentElement.classList.remove('active');
+                prevElement.classList.remove('exit');
+                prevElement.classList.add('active');
+            }
+        }
+
+        // Particle Heart Generator Engine
+        function spawnFloatingHeart() {
+            const field = document.getElementById('heart-field');
+            const spark = document.createElement('div');
+            spark.classList.add('heart');
+            
+            const heartVariations = ['❤️', '💖', '💝', '💕', '✨'];
+            spark.innerText = heartVariations[Math.floor(Math.random() * heartVariations.length)];
+            
+            spark.style.left = Math.random() * 100 + 'vw';
+            spark.style.animationDuration = Math.random() * 3.5 + 3.5 + 's'; // Variable 3.5s to 7s speeds
+            spark.style.fontSize = Math.random() * 18 + 12 + 'px'; // Randomizes sizes elegantly
+            
+            field.appendChild(spark);
+            
+            // Auto garbage collection to keep performance optimal
+            setTimeout(() => {
+                spark.remove();
+            }, 7000);
+        }
+
+        // Constant heart animation cycles
+        setInterval(spawnFloatingHeart, 320);
+    </script>
+</body>
+</html>
